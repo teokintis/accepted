@@ -1,0 +1,12 @@
+<div class="shell-bar" *ngIf="mode$ | async as mode">
+  <div *ngIf="mode === 'dark'; else lightMode" (click)="onUpdateMode('light')">
+    <i class="fa fa-sun-o" style='margin-right: .5rem;'></i>
+    <span>Lightmode</span>
+  </div>
+  <ng-template #lightMode>
+    <div (click)="onUpdateMode('dark')">
+      <i class="fa fa-moon-o" style='margin-right: .5rem;'></i>
+      <span>Darkmode</span>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,16 @@
+
+<div class="teams" *ngIf="teams$ | async as teams">
+  <div class="teams__toolbar">
+    <div class="teams__toolbar--search">
+      <app-search-bar (searchKeyUp)="searchKeyUp($event)"></app-search-bar>
+    </div>
+    <div class="teams__toolbar--filter">
+      <app-filter></app-filter>
+    </div>
+  </div>
+  <div class="teams__grid">
+    <ng-container  *ngFor="let item of teams">
+      <team-card [team]="item" (selectTeam)="selectTeam($event)"></team-card>
+    </ng-container>
+  </div>
+</div>

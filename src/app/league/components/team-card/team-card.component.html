@@ -1,0 +1,17 @@
+
+<ng-container *ngIf="team">
+  <div class="card" (click)="onSelectTeam()">
+    <div class="card__image">
+      <img [src]="team.strTeamBadge" alt="">
+    </div>
+    <div class="card__body">
+      <h3>{{team.strTeam}}</h3>
+      <div class="card__properties">
+        <ng-container *ngFor="let prop of properties">
+          <div class="card__properties--label">{{prop.value}}</div>
+          <div class="card__properties--value">{{team | getValue: prop?.name}}</div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>

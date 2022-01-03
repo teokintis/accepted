@@ -1,0 +1,15 @@
+.teams{
+  display:flex;
+  flex-direction: column;
+  row-gap:2rem;
+  &__toolbar{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__grid{
+    display: flex;
+    gap:2.5rem;
+    flex-wrap: wrap;
+  }
+}
