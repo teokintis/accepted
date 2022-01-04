@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
-import { distinctUntilChanged, filter, map, startWith, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import { Store } from 'src/app/store';
 import { Filters } from '../../components/filter/filter.component';
 import { TeamSummary } from '../../models/team-summary';

@@ -1,12 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent implements OnInit {
-
   @Output() filterChange = new EventEmitter<any>();
   value = Filters.ALL;
   options=[{value:Filters.ALL, name:'All categories'}, {value:Filters.FAVORITES, name:'Favorites'}, {value:Filters.STADIUMS, name:'Large Stadiums'}];

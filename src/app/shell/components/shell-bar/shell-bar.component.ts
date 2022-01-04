@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
   selector: 'app-shell-bar',
   templateUrl: './shell-bar.component.html',
   styleUrls: ['./shell-bar.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ShellBarComponent implements OnInit {
   @Input() mode$: Observable<'light' | 'dark'> = of('light');

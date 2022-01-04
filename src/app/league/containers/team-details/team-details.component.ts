@@ -30,7 +30,6 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   goToLink(link:string){
-    console.warn('link', link);
     window.open(link, "_blank");
   }
 
