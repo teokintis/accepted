@@ -12,18 +12,26 @@ import { ShellService } from '../../services/shell.service';
 export class ShellWrapperComponent implements OnInit {
 
   mode$:Observable<'light' | 'dark'> = of('light');
+  history$:Observable<string[]> = of([]);
 
-  constructor(private shellService: ShellService, private store: Store) { }
+  constructor(private shellService: ShellService,
+     private store: Store,
+     ) { }
 
   ngOnInit(): void {
     let mode = localStorage.getItem('mode');
     mode = mode==='light' || mode==='dark' ? mode: 'light'; //avoid null or 'null'
     this.updateMode(mode as 'light' | 'dark');
     this.mode$ = this.store.select('mode');
+    this.history$ = this.store.select('history');
   }
 
   updateMode(mode: 'light' | 'dark'){
     this.shellService.updateMode(mode);
+  }
+
+  back(){
+    this.shellService.back();
   }
 
 }

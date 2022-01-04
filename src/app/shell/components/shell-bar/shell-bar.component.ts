@@ -9,7 +9,9 @@ import { Observable, of } from 'rxjs';
 })
 export class ShellBarComponent implements OnInit {
   @Input() mode$: Observable<'light' | 'dark'> = of('light');
+  @Input() history$:Observable<string[]> = of([]);
   @Output() updateMode = new EventEmitter<any>();
+  @Output() back = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +19,10 @@ export class ShellBarComponent implements OnInit {
 
   onUpdateMode(mode:'light' | 'dark'){
     this.updateMode.emit(mode);
+  }
+
+  onBack(){
+    this.back.emit();
   }
 
 }

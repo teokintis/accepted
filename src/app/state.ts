@@ -4,4 +4,5 @@ export interface State {
   mode: 'light' | 'dark';
   filterText?:string;
   filterCategory?:number;
+  history?:string[]
 }

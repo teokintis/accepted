@@ -1,6 +1,11 @@
 <div class="shell-wrapper" *ngIf="mode$ | async as mode" [ngClass]="{'dark-mode': mode==='dark'}">
   <div class='shell-wrapper__header'>
-    <app-shell-bar  (updateMode)="updateMode($event)" [mode$]="mode$"></app-shell-bar>
+    <app-shell-bar
+    (updateMode)="updateMode($event)"
+    (back)="back()"
+    [mode$]="mode$"
+    [history$]="history$"
+    ></app-shell-bar>
   </div>
   <div class="shell-wrapper__body">
       <router-outlet></router-outlet>

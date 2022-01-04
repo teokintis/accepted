@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { ShellBarComponent } from './components/shell-bar/shell-bar.component';
 import { ShellWrapperComponent } from './containers/shell-wrapper/shell-wrapper.component';
-import { ShellService } from './services/shell.service';
 
 
 
@@ -20,8 +19,5 @@ import { ShellService } from './services/shell.service';
   exports:[
     ShellWrapperComponent
   ],
-  providers:[
-    ShellService
-  ]
 })
 export class ShellModule { }
