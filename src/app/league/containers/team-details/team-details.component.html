@@ -1,7 +1,87 @@
 
 <div class="team" *ngIf="team$ | async as team">
-  <pre>
-  {{team | json}}
+  <div class="team__img">
+    <img [src]="team.strTeamFanart4" alt="">
+  </div>
 
-  </pre>
+  <div class="team__section">
+    <div class="team__section-inner">
+      <div class="team__section--title">
+        <div class="title">
+          <div class='name'>{{team.strTeam}}</div>
+          <div class='alternative'>{{team.strAlternate}}</div>
+        </div>
+        <div class="media">
+          <i class="fa fa-instagram fa-3x" aria-hidden="true" (click)="goToLink(team.strInstagram)"></i>
+          <i class="fa fa-facebook-square fa-3x" aria-hidden="true" (click)="goToLink(team.strFacebook)"></i>
+          <i class="fa fa-twitter-square fa-3x" aria-hidden="true" (click)="goToLink(team.strTwitter)"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="team__section">
+    <div class="team__section-inner">
+      <div class="team__section--header">
+        Stadium
+      </div>
+      <div class="team__section--body">
+        <div class="stadium">
+          <img [src]="team.strStadiumThumb" alt="">
+          <div>
+            {{team.strStadiumDescription}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="team__section">
+    <div class="team__section-inner">
+      <div class="team__section--header">
+        Description
+      </div>
+      <div class="team__section--body">
+        {{team.strDescriptionEN}}
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="team__section">
+    <div class="team__section-inner">
+      <div class="team__section--header">
+        Leagues
+      </div>
+      <div class="team__section--body">
+        <div class="leagues">
+          <ng-container  *ngFor="let item of leagues" >
+            <div class="league" *ngIf="team[item]">
+              <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+              <span>{{team[item]}}</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="team__section">
+    <div class="team__section-inner">
+      <div class="team__section--header">
+        Information
+      </div>
+      <div class="team__section--body">
+        <div class="stadium">
+          <img [src]="team.strTeamFanart2" alt="">
+          <div>
+            {{team.strStadiumDescription}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
