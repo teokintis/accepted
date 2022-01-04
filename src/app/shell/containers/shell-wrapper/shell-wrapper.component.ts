@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Store } from 'src/app/store';
 import { ShellService } from '../../services/shell.service';
@@ -6,7 +6,8 @@ import { ShellService } from '../../services/shell.service';
 @Component({
   selector: 'app-shell-wrapper',
   templateUrl: './shell-wrapper.component.html',
-  styleUrls: ['./shell-wrapper.component.scss']
+  styleUrls: ['./shell-wrapper.component.scss'],
+  encapsulation:ViewEncapsulation.None //support dark mode
 })
 export class ShellWrapperComponent implements OnInit {
 

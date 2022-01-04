@@ -15,11 +15,19 @@
     top:50px;
     padding: 2rem 0;
     width: 100%;
+    min-height: calc(100% - 50px);
+    box-sizing: border-box;
   }
 
   &.dark-mode{
     >div{
       background-color: rgb(54, 54, 54);
+      color:#fff;
+    }
+    //encapsulation none applies these styles globally
+    input, select, .card{
+      background-color: rgb(54, 54, 54);
+      box-shadow: 0 1px 6px rgb(255 255 255 / 28%);
       color:#fff;
     }
   }

@@ -23,7 +23,7 @@
   }
 }
 
-@media only screen and (max-width: 1025px) { //IPAD PRO
+@media only screen and (max-width: 1250px) { //IPAD PRO
   .teams{
      max-width: 98%;
     &__grid{
@@ -45,7 +45,7 @@
   }
 }
 
-@media only screen and (max-width: 542px) { //surface duo
+@media only screen and (max-width: 570px) { //surface duo
   .teams{
      max-width: 80%;
     &__grid{
