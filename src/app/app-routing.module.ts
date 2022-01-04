@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeamDetailsComponent } from './league/containers/team-details/team-details.component';
-import { TeamsComponent } from './league/containers/teams/teams.component';
 
 const routes: Routes = [
   {
@@ -11,12 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'teams' ,
-    component:TeamsComponent
-  },
-  {
-    path: 'teams/:id' ,
-    component:TeamDetailsComponent
+    loadChildren: () => import('./league/league.module').then((m) => m.LeagueModule),
   }
+
 ];
 
 @NgModule({

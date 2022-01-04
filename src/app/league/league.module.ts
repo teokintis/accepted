@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { LeagueRoutingModule } from './league-routing.module';
 
 import { TeamsComponent } from './containers/teams/teams.component';
 import { TeamDetailsComponent } from './containers/team-details/team-details.component';
@@ -10,7 +12,7 @@ import { FilterComponent } from './components/filter/filter.component';
 
 import { LeagueService } from './services/league.service';
 import { GetValuePipe } from './pipes/get-value.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -24,8 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    LeagueRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FormsModule
   ],
   providers:[

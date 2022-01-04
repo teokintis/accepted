@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
 import { distinctUntilChanged, filter, map, startWith, take, tap } from 'rxjs/operators';
 import { Store } from 'src/app/store';
+import { Filters } from '../../components/filter/filter.component';
 import { TeamSummary } from '../../models/team-summary';
 import { LeagueService } from '../../services/league.service';
 
@@ -21,10 +22,16 @@ export class TeamsComponent implements OnInit {
     )  { }
 
   ngOnInit(): void {
-    this.teams$ = combineLatest([this.store.select('teams'), this.store.select('filterText').pipe(distinctUntilChanged())])
+    this.teams$ = combineLatest(
+      [
+      this.store.select('teams').pipe(distinctUntilChanged()),
+      this.store.select('filterText').pipe(distinctUntilChanged()),
+      this.store.select('filterCategory').pipe(distinctUntilChanged()),
+    ])
       .pipe(
-        map(([teams, filterText]) =>  {
-          return filterText ? (teams as any)?.filter((team: any)=>team.strTeam.startsWith(filterText)) : teams
+        map(([teams, filterText, filterCategory]) =>  {
+          const filteredByCategory = this.filterByCategory(teams as any[], filterCategory as Filters);
+          return filterText ? (filteredByCategory as any)?.filter((team: any)=>team.strTeam.startsWith(filterText)) : filteredByCategory
         }));
 
     this.leagueService.getTeams$.pipe(take(1)).subscribe();
@@ -36,6 +43,24 @@ export class TeamsComponent implements OnInit {
 
   searchKeyUp(event:any){
     this.store.set('filterText', event);
+  }
+
+  filterChange(event: Filters){
+    this.store.set('filterCategory', +event);
+  }
+
+  private filterByCategory(collection: any[], category: Filters){
+    switch (category) {
+      case Filters.ALL:
+        return collection;
+      case Filters.FAVORITES:
+        return collection.filter((team: any)=>team.intLoved > 4);
+      case Filters.STADIUMS:
+        return collection.filter((team: any)=>team.intStadiumCapacity > 45000);
+      default:
+        return collection;
+    }
+
   }
 
 }
